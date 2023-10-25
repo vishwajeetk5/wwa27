@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOG_IN</title>
+    <link rel="stylesheet" href="style_login.css">
+</head>
+<body>
+
+    <a href="index.html"><img src="JOBHUB-removebg-preview.png" alt="JOBHUB_LOGO"></a>
+
+    <div class="container">
+        <form action="welcome.html" onsubmit="return validateForm()">
+            <fieldset>
+                <legend><h2>Log In</h2></legend>
+                <p>Username : <input type="text" name="uname" id="uname" pattern=".{5,}" title="Username must be at least 5 characters long" required></p>
+                <p>Password : <input type="password" name="pword" id="pword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+                title="Password must contain at least one number, one uppercase and one lowercase letter, and at least 8 or more characters" required></p>
+                <input type="submit" value="Login">
+            </fieldset>
+        </form>
+
+        <!--<p>If you are a new user, <a href="Sign_up.html">Sign Up here</a>.</p>-->
+    </div>
+
+    <script>
+        function validateForm() {
+            var uname = document.getElementById("uname").value;
+            var pword = document.getElementById("pword").value;
+            if (uname.length < 5) {
+                alert("Username must be at least 5 characters long");
+                return false;
+            }
+            if (pword.length < 8) {
+                alert("Password must be at least 8 characters long");
+                return false;
+            }
+            var passw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+            if (!pword.match(passw)) {
+                alert('Password must contain at least one numeric digit, one uppercase, and one lowercase letter');
+                return false;
+            }
+            return true;
+        }
+    </script>
+
+</body>
+</html>
